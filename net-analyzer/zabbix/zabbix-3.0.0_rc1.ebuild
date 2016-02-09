@@ -13,7 +13,7 @@ HOMEPAGE="http://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
 #SRC_URI="http://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
-SRC_URI="http://prdownloads.sourceforge.net/zabbix/zabbix-3.0.0alpha3.tar.gz"
+SRC_URI="http://prdownloads.sourceforge.net/zabbix/zabbix-3.0.0rc1.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
@@ -54,7 +54,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/zabbix-3.0.0alpha3
+S=${WORKDIR}/zabbix-3.0.0rc1
 
 ZABBIXJAVA_BASE="opt/zabbix_java"
 
@@ -277,20 +277,16 @@ src_install() {
 	if use agent; then
 		insinto /etc/zabbix
 		doins \
-			"${FILESDIR}/3.0"/zabbix_agent.conf \
 			"${FILESDIR}/3.0"/zabbix_agentd.conf
 		doinitd "${FILESDIR}/3.0"/init.d/zabbix-agentd
 		dosbin \
-			src/zabbix_agent/zabbix_agent \
 			src/zabbix_agent/zabbix_agentd
 		dobin \
 			src/zabbix_sender/zabbix_sender \
 			src/zabbix_get/zabbix_get
 		fowners zabbix:zabbix \
-			/etc/zabbix/zabbix_agent.conf \
 			/etc/zabbix/zabbix_agentd.conf
 		fperms 0640 \
-			/etc/zabbix/zabbix_agent.conf \
 			/etc/zabbix/zabbix_agentd.conf
 		systemd_dounit "${FILESDIR}/zabbix-agentd.service"
 		systemd_newtmpfilesd "${FILESDIR}/zabbix-agentd.tmpfiles" zabbix-agentd.conf
@@ -314,7 +310,6 @@ src_install() {
 		/var/log/zabbix
 
 	dodoc README INSTALL NEWS ChangeLog \
-		conf/zabbix_agent.conf \
 		conf/zabbix_agentd.conf \
 		conf/zabbix_proxy.conf \
 		conf/zabbix_agentd/userparameter_examples.conf \
