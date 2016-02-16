@@ -12,8 +12,7 @@ DESCRIPTION="ZABBIX is software for monitoring of your applications, network and
 HOMEPAGE="http://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
-#SRC_URI="http://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
-SRC_URI="http://prdownloads.sourceforge.net/zabbix/zabbix-3.0.0rc1.tar.gz"
+SRC_URI="http://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
@@ -54,7 +53,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/zabbix-3.0.0rc1
+S=${WORKDIR}/${MY_P}
 
 ZABBIXJAVA_BASE="opt/zabbix_java"
 
