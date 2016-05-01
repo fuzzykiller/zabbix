@@ -13,7 +13,6 @@ HOMEPAGE="http://www.zabbix.com/"
 MY_P=${P/_/}
 MY_PV=${PV/_/}
 SRC_URI="http://prdownloads.sourceforge.net/zabbix/${MY_P}.tar.gz"
-#SRC_URI="http://prdownloads.sourceforge.net/zabbix/zabbix-3.0.0rc1.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
@@ -27,7 +26,7 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 		net-libs/gnutls
 	)
 	mysql? ( >=virtual/mysql-5.0.3 )
-	openssl? ( >=dev-libs/openssl-1.0.2 )
+	openssl? ( >=dev-libs/openssl-1.0.2[-bindist] )
 	gnutls? ( >=net-libs/gnutls-3.1.18 )
 	sqlite? ( >=dev-db/sqlite-3.3.5 )
 	postgres? ( dev-db/postgresql:* )
